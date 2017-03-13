@@ -1,0 +1,55 @@
+apply plugin: 'com.android.application'
+apply from: "../artifacts.gradle"
+// Create a variable called keystorePropertiesFile, and initialize it to your
+// keystore.properties file, in the rootProject folder.
+def keystorePropertiesFile = rootProject.file("keystore.properties")
+
+// Initialize a new Properties() object called keystoreProperties.
+def keystoreProperties = new Properties()
+
+// Load your keystore.properties file into the keystoreProperties object.
+keystoreProperties.load(new FileInputStream(keystorePropertiesFile))
+
+android {
+    signingConfigs {
+        pbfs {
+            keyAlias 'PBFS'
+            keyPassword 'Warp1one!@#'
+            storeFile file('D:/AndroidWorkspace/AndroidStudioProjects/PinkBunnyFartSounds/Keys/PBFSKeys.jks')
+            storePassword 'Warp1one!@#'
+        }
+    }
+    compileSdkVersion 25
+    buildToolsVersion "25.0.2"
+    defaultConfig {
+        applicationId "com.randomandroidapps.pinkbunnyfs"
+        minSdkVersion 15
+        targetSdkVersion 25
+        versionCode 3
+        versionName "3.0"
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            zipAlignEnabled true
+            signingConfig signingConfigs.pbfs
+        }
+    }
+    productFlavors {
+        pbfs {
+            signingConfig signingConfigs.pbfs
+        }
+    }
+}
+
+dependencies {
+    compile fileTree(include: ['*.jar'], dir: 'libs')
+    androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
+        exclude group: 'com.android.support', module: 'support-annotations'
+    })
+    compile 'com.android.support:appcompat-v7:25.1.1'
+    testCompile 'junit:junit:4.12'
+}
