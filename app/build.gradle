@@ -13,10 +13,10 @@ keystoreProperties.load(new FileInputStream(keystorePropertiesFile))
 android {
     signingConfigs {
         pbfs {
-            keyAlias 'PBFS'
-            keyPassword 'Warp1one!@#'
-            storeFile file('D:/AndroidWorkspace/AndroidStudioProjects/PinkBunnyFartSounds/Keys/PBFSKeys.jks')
-            storePassword 'Warp1one!@#'
+            keyAlias keystoreProperties['keyAlias']
+            keyPassword keystoreProperties['keyPassword']
+            storeFile file(keystoreProperties['storeFile'])
+            storePassword keystoreProperties['storePassword']
         }
     }
     compileSdkVersion 25
@@ -25,8 +25,8 @@ android {
         applicationId "com.randomandroidapps.pinkbunnyfs"
         minSdkVersion 15
         targetSdkVersion 25
-        versionCode 3
-        versionName "3.0"
+        versionCode 4
+        versionName "4.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
 
     }

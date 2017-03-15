@@ -1,1 +1,1 @@
-"C:\Program Files\Java\jdk1.8.0_65\bin\jarsigner" -verify -verbose -certs D:\AndroidWorkspace\AndroidStudioProjects\PinkBunnyFartSounds\app\PinkBunnyFartSounds-pbfs-release-1.0.apk
+"C:\Program Files\Java\jdk1.8.0_65\bin\jarsigner" -verify -verbose -certs D:\gitRepos\AndroidWorkspace\PinkBunnyFartSounds\app\PinkBunnyFartSounds-pbfs-release-1.0.apk
